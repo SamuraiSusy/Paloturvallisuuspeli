@@ -19,6 +19,8 @@ public class TextBoxContent : MonoBehaviour
         SetUpMovingToYard();
         SetUpMovingToKatos();
         SetUpDialogies();
+
+        Debug.Log(dialogies[0].Length + " dialogies lenght");
 	}
 
     private void SetUpDialogies()

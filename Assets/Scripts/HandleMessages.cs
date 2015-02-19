@@ -9,42 +9,34 @@ public class HandleMessages : MonoBehaviour
     public int messageCount;
 
 	// Use this for initialization
-	void Start ()
+	private void Start ()
     {
-        txtbox = GameObject.FindGameObjectWithTag("TextBox").GetComponent<TextBox>();
-        boxContent = GameObject.FindGameObjectWithTag("Content").GetComponent<TextBoxContent>();
-	}
-	
-	// Update is called once per frame
-	void Update ()
-    {
-	
+        txtbox = GetComponent<TextBox>();
+        boxContent = GetComponent<TextBoxContent>();
 	}
 
-    public void ChangeMessages()
+    public void ChangeMessages(int sceneID)
     {
-
+        WriteMessages(sceneID);
     }
 
-    private void WriteMessages()
+    private void WriteMessages(int dialogueID)
     {
-        for(int i = 0; i < boxContent.dialogies.Length; i++)
+        if (messageCount < boxContent.dialogies[dialogueID].Length)
         {
-            if(messageCount < boxContent.dialogies[i].Length)
+            if(Input.GetKeyUp(KeyCode.Mouse0))
             {
-                if(Input.GetKeyUp(KeyCode.Mouse0))
-                {
-                    txtbox.currentMessage = GenerateMessages(boxContent.dialogies[i], messageCount);
-                    messageCount++;
-                }
+                Debug.Log("pressed mouse 0");
+                txtbox.currentMessage = GenerateMessages(boxContent.dialogies[dialogueID], messageCount);
+                messageCount++;
             }
-            else
-            {
-                txtbox.showBox = false;
-                txtbox.showMessage = false;
-                txtbox.currentMessage = "";
-                messageCount = 0;
-            }
+        }
+        else
+        {
+            txtbox.showBox = false;
+            txtbox.showMessage = false;
+            txtbox.currentMessage = "";
+            messageCount = 0;
         }
     }
 
