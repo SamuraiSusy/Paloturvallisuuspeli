@@ -12,18 +12,7 @@ public class MainMenu : MonoBehaviour
     public float buttonTMultiplier = 4.8f;
     public float buttonWMultiplier = 4.8f;
     public float buttonHMultiplier = 9.6f;
-    public float buttonOffset = 50f; // toimii vain 640x480 resolla tällä hetkellä
-
-	// Use this for initialization
-	private void Start ()
-    {
-        
-	}
-	
-	// Update is called once per frame
-	private void Update () 
-    {
-	}
+    public float buttonOffsetMultiplier = 9.6f;
 
     private void OnGUI()
     {
@@ -39,7 +28,7 @@ public class MainMenu : MonoBehaviour
                 ButtonContent(i);
             }
 
-            offset += buttonOffset;
+            offset += Screen.height / buttonOffsetMultiplier;
         }
     }
 
@@ -51,7 +40,7 @@ public class MainMenu : MonoBehaviour
                 Application.LoadLevel(1);
                 break;
             case 1:
-                Application.LoadLevel(5);
+                Application.LoadLevel(5); // end scene, koska ohjescenessä ei oo viel mitää
                 break;
             case 2:
                 Application.Quit();

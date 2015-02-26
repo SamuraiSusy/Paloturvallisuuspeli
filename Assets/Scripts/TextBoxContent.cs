@@ -11,7 +11,7 @@ public class TextBoxContent : MonoBehaviour
     public string[] movingToKatos;
 
 	// Use this for initialization
-	void Start ()
+	private void Awake ()
     {
         SetUpBeginning();
         SetUpFireStarts();
@@ -20,7 +20,7 @@ public class TextBoxContent : MonoBehaviour
         SetUpMovingToKatos();
         SetUpDialogies();
 
-        Debug.Log(dialogies[0].Length + " dialogies lenght");
+        //Debug.Log(dialogies[0].Length + " dialogies lenght");
 	}
 
     private void SetUpDialogies()
@@ -45,8 +45,11 @@ public class TextBoxContent : MonoBehaviour
 
     private void SetUpFireStarts()
     {
-        beginning = new string[]
+        fireStarts = new string[]
         {
+            "Palo alkoi.",
+            "Se alkoi taas.",
+            "Ja taas",
             "Palo alkoi.",
             "Loppu."
         };
@@ -54,7 +57,7 @@ public class TextBoxContent : MonoBehaviour
 
     private void SetUpMovingToEteinen()
     {
-        beginning = new string[]
+        movingToEteinen = new string[]
         {
             "Lapset siirtyivät eteiseen.",
             "Loppu."
@@ -63,7 +66,7 @@ public class TextBoxContent : MonoBehaviour
 
     private void SetUpMovingToYard()
     {
-        beginning = new string[]
+        movingToYard = new string[]
         {
             "Lapset menivät pihalle parijonossa.",
             "Loppu."
@@ -72,7 +75,7 @@ public class TextBoxContent : MonoBehaviour
 
     private void SetUpMovingToKatos()
     {
-        beginning = new string[]
+        movingToKatos = new string[]
         {
             "Kaikki olivat iloisina katoksessa.",
             "Loppu."
