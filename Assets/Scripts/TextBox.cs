@@ -57,5 +57,9 @@ public class TextBox : MonoBehaviour
         {
             handler.ChangeMessages(4);
         }
+        else if (Application.loadedLevel == 5)
+        {
+            handler.ChangeMessages(5);
+        }
     }
 }

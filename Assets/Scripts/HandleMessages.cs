@@ -24,12 +24,13 @@ public class HandleMessages : MonoBehaviour
         messageCount = 0;
         lastLine = false;
 
-        sceneNames = new string[5];
+        sceneNames = new string[6];
         sceneNames[0] = "scene1";
         sceneNames[1] = "scene2";
         sceneNames[2] = "scene3";
         sceneNames[3] = "scene4";
-        sceneNames[4] = "end";
+        sceneNames[4] = "scene5";
+        sceneNames[5] = "end";
 	}
 
     private void OnGUI()
@@ -83,7 +84,7 @@ public class HandleMessages : MonoBehaviour
             if (Application.loadedLevelName == sceneNames[i])
                 Application.LoadLevel(sceneNames[i + 1]);
 
-            if (Application.loadedLevelName == sceneNames[4])
+            if (Application.loadedLevelName == sceneNames[5])
                 break;
         }
     }
