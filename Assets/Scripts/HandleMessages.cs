@@ -6,9 +6,12 @@ public class HandleMessages : MonoBehaviour
     public GUISkin skin;
     private TextBox txtbox;
     private TextBoxContent boxContent;
+    private Options option;
+    public bool showOptions;
+    private bool oneTime;
     public string[] sceneNames;
     public int messageCount;
-    private bool lastLine;
+    public bool lastLine;
     public string firstLine;
     public float boxLMultiplier = 2.37037f;
     public float boxTMultiplier = 4.8f;
@@ -19,6 +22,7 @@ public class HandleMessages : MonoBehaviour
 	private void Start ()
     {
         txtbox = GetComponent<TextBox>();
+        option = GetComponent<Options>();
         txtbox.currentMessage = firstLine;
         boxContent = GetComponent<TextBoxContent>();
         messageCount = 0;
@@ -31,17 +35,30 @@ public class HandleMessages : MonoBehaviour
         sceneNames[3] = "scene4";
         sceneNames[4] = "scene5";
         sceneNames[5] = "end";
+
+        showOptions = false;
+        oneTime = false;
 	}
+
+    private void Update()
+    {
+        if(!oneTime && showOptions)
+        {
+            option.DrawOptions();
+            oneTime = true;
+        }
+    }
 
     private void OnGUI()
     {
         GUI.skin = skin;
         if (lastLine)
         {
-            if (GUI.Button(new Rect(Screen.width / boxLMultiplier, Screen.height / boxTMultiplier, Screen.width / boxWMultiplier, Screen.height / boxHMultiplier), "Seuraava sivu", skin.GetStyle("buttontest")))
-            {
-                ChangeScene();
-            }
+            //if (GUI.Button(new Rect(Screen.width / boxLMultiplier, Screen.height / boxTMultiplier, Screen.width / boxWMultiplier, Screen.height / boxHMultiplier), "Seuraava sivu", skin.GetStyle("buttontest")))
+            //{
+            //    ChangeScene();
+            //}
+            //option.DrawOptions();
         }
     }
 
@@ -52,6 +69,7 @@ public class HandleMessages : MonoBehaviour
 
     private void WriteMessages(int dialogueID)
     {
+        
         if (messageCount < boxContent.dialogies[dialogueID].Length)
         {
             if(Input.GetKeyUp(KeyCode.Mouse0))
@@ -67,6 +85,11 @@ public class HandleMessages : MonoBehaviour
             txtbox.currentMessage = "";
             messageCount = 0;
             lastLine = true;
+            showOptions = true;
+            if(Application.loadedLevel == 5)
+            {
+                Application.LoadLevel(0);
+            }
         }
     }
 
@@ -77,7 +100,7 @@ public class HandleMessages : MonoBehaviour
         return txtbox.currentMessage;
     }
 
-    private void ChangeScene()
+    public void ChangeScene()
     {
         for (int i = 0; i < sceneNames.Length; i++)
         {
