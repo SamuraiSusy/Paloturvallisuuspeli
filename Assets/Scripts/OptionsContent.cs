@@ -3,6 +3,7 @@ using System.Collections;
 
 public class OptionsContent : MonoBehaviour
 {
+    // tarvitaank tätä luokkaa enää??
     public string[][] optionsArray;
     public string[] options1;
     public string[] options2;

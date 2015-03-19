@@ -41,25 +41,13 @@ public class TextBox : MonoBehaviour
 
     private void WhichScene()
     {
-        if (Application.loadedLevel == 1)
+        // i = story scene count + 1, atm 5 scenes
+        for(int i = 0; i < 6; i++)
         {
-            handler.ChangeMessages(1);
-        }
-        else if (Application.loadedLevel == 2)
-        {
-            handler.ChangeMessages(2);
-        }
-        else if (Application.loadedLevel == 3)
-        {
-            handler.ChangeMessages(3);
-        }
-        else if (Application.loadedLevel == 4)
-        {
-            handler.ChangeMessages(4);
-        }
-        else if (Application.loadedLevel == 5)
-        {
-            handler.ChangeMessages(5);
+            if (Application.loadedLevel == i)
+            {
+                handler.ChangeMessages(i);
+            }
         }
     }
 }

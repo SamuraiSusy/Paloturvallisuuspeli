@@ -1,6 +1,9 @@
 fileFormatVersion: 2
 guid: 7347e4c96d0002445abf0b4e8961ce38
 TextureImporter:
+  fileIDToRecycleName:
+    21300000: buttons.wip_0
+    21300002: buttons.wip_1
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -36,7 +39,7 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: .5, y: .5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 140
   alphaIsTransparency: 1
   textureType: 8
   buildTargetSettings: []
